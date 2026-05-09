@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Direction {
+  BUY
+  SELL
+}
+
+enum SignalStatus {
+  OPEN
+  TARGET_HIT
+  STOPLOSS_HIT
+  EXPIRED
+}
+
+model TradingSignal {
+  id             String       @id @default(uuid()) @db.Uuid
+  symbol         String
+  direction      Direction
+  entry_price    Decimal      @db.Decimal(20, 8)
+  stop_loss      Decimal      @db.Decimal(20, 8)
+  target_price   Decimal      @db.Decimal(20, 8)
+  entry_time     DateTime
+  expiry_time    DateTime
+  created_at     DateTime     @default(now())
+  status         SignalStatus @default(OPEN)
+  realized_roi   Decimal?     @db.Decimal(12, 4)
+
+  @@map("trading_signals")
+}
