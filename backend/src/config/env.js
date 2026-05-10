@@ -12,7 +12,6 @@ function requireEnv(name) {
 
 /** Official market-data host; often works from cloud regions where api.binance.com does not. */
 const DEFAULT_BINANCE_BASE = "https://data-api.binance.vision";
-
 /**
  * @param {string | undefined} raw
  */
