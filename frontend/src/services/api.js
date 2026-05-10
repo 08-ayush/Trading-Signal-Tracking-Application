@@ -1,8 +1,11 @@
 import axios from "axios";
 
+const fromEnv = import.meta.env.VITE_API_BASE_URL?.trim().replace(/\/$/, "");
+// Local dev: default Express API. Production (e.g. Vercel): set VITE_API_BASE_URL
+// to your deployed API (e.g. https://api.example.com/api), or serve /api via proxy.
 const baseURL =
-  import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") ||
-  "http://localhost:4000/api";
+  fromEnv ||
+  (import.meta.env.DEV ? "http://localhost:4000/api" : "/api");
 
 export const api = axios.create({
   baseURL,

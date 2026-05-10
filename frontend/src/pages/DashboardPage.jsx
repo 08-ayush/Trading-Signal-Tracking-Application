@@ -67,8 +67,7 @@ export default function DashboardPage() {
           <div>
             <h2 className="text-lg font-semibold text-white">Dashboard</h2>
             <p className="text-sm text-slate-400">
-              Auto-refresh every 15s · Binance prices are fetched on the server (your
-              Network tab only shows calls to this app’s API)
+              Auto-refresh every 15s · Binance prices are fetched on the server
             </p>
           </div>
           <button
